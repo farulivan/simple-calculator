@@ -1,6 +1,3 @@
-$buttonPrimary: #BBE7EB50;
-$buttonSecondary: #FFE2B050;
-
 #root {
   height: 100vh;
 
@@ -19,68 +16,68 @@ $buttonSecondary: #FFE2B050;
   background-color: white;
 }
 
-.screen {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 14rem;
-  margin: 2rem;
-  padding-top: 2rem;
-  border-bottom: 2px solid #4D4D4D;
+// .screen {
+//   text-align: right;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   height: 14rem;
+//   margin: 2rem;
+//   padding-top: 2rem;
+//   border-bottom: 2px solid #4D4D4D;
 
-  &__history {
-    font-size: 2rem;
-  }
+//   &__history {
+//     font-size: 2rem;
+//   }
 
-  &__main {
-    width: 100%;
-    position: relative;
-  }
+//   &__main {
+//     width: 100%;
+//     position: relative;
+//   }
 
-  &__equal {
-    position: absolute;
-    left: 0;
-    z-index: 20;
-    font-size: 4rem;
-  }
+//   &__equal {
+//     position: absolute;
+//     left: 0;
+//     z-index: 20;
+//     font-size: 4rem;
+//   }
 
-  &__answer {
-    display: inline-block;
-    overflow: hidden;
-    font-size: 4rem;
-  }
-}
+//   &__answer {
+//     display: inline-block;
+//     overflow: hidden;
+//     font-size: 4rem;
+//   }
+// }
 
-.button {
-  padding: 2rem;
-  // width: 100%;
-  height: calc(100% - 18rem);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-gap: 10px;
-  color: #4D4D4D;
+// .button {
+//   padding: 2rem;
+//   // width: 100%;
+//   height: calc(100% - 18rem);
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   grid-template-rows: repeat(5, 1fr);
+//   grid-gap: 10px;
+//   color: #4D4D4D;
 
-  button {
-    font-size: 2rem;
-    border: none;
-    color: #4D4D4D;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 30px;
-    outline: none;
-  }
+//   button {
+//     font-size: 2rem;
+//     border: none;
+//     color: #4D4D4D;
+//     font-weight: bold;
+//     cursor: pointer;
+//     border-radius: 30px;
+//     outline: none;
+//   }
 
-  &__clear {
-    grid-column: 1/4;
-  }
+//   &__clear {
+//     grid-column: 1/4;
+//   }
 
-  .blue {
-    background-color: $buttonPrimary;
-  }
+//   .blue {
+//     background-color: $buttonPrimary;
+//   }
 
-  .yellow {
-    background-color: $buttonSecondary;
-  }
-}
+//   .yellow {
+//     background-color: $buttonSecondary;
+//   }
+// }

@@ -1,6 +1,16 @@
 // import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
+import Button from './components/Button';
+import Screen from './components/Screen';
 // import { counterActions } from './store';
+
+const calButtons = [
+  ['CLEAR', 'x'],
+  [1, 2, 3, '+'],
+  [4, 5, 6, '-'],
+  [7, 8, 9, '%'],
+  ['+/-', 0, '.', '='],
+];
 
 function App() {
   // const dispatch = useDispatch();
@@ -16,40 +26,25 @@ function App() {
 
   return (
     <div className="App">
-      <div className='screen'>
-        <p className='screen__history'>25 - 56 + 587</p>
-        <div className='screen__main'>
-          <p className='screen__equal'>=</p>
-          <p className='screen__answer'>587</p>
-        </div>
+      <Screen history={25-56+587} value={587} />
+      <div className="button">
+        {calButtons.flat().map((value, index) => {
+          return (
+            <Button
+              key={index}
+              type='button'
+              className={
+                value === 'CLEAR'
+                  ? 'button__item button__clear button__bg-blue'
+                  : typeof value === 'string'
+                  ? 'button__item button__bg-blue'
+                  : 'button__item button__bg-orange'
+              }
+              value={value}
+            />
+          );
+        })}
       </div>
-      <div className='button'>
-        <button className='button__clear blue' type='button'>CLEAR</button>
-        <button className='yellow' type='button'>x</button>
-        <button className='blue' type='button'>1</button>
-        <button className='blue' type='button'>2</button>
-        <button className='blue' type='button'>3</button>
-        <button className='yellow' type='button'>+</button>
-        <button className='blue' type='button'>4</button>
-        <button className='blue' type='button'>5</button>
-        <button className='blue' type='button'>6</button>
-        <button className='yellow' type='button'>-</button>
-        <button className='blue' type='button'>7</button>
-        <button className='blue' type='button'>8</button>
-        <button className='blue' type='button'>9</button>
-        <button className='yellow' type='button'>%</button>
-        <button className='yellow' type='button'>+/-</button>
-        <button className='blue' type='button'>0</button>
-        <button className='yellow' type='button'>.</button>
-        <button className='yellow' type='button'>=</button>
-      </div>
-
-
-      {/* <div className="card">
-        <button type='button' onClick={incrementHandler}>+</button>
-        <p className="card__count">{counter}</p>
-        <button type='button' onClick={decrementHandler}>-</button>
-      </div> */}
     </div>
   );
 }
