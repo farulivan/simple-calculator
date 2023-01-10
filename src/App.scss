@@ -1,51 +1,86 @@
+$buttonPrimary: #BBE7EB50;
+$buttonSecondary: #FFE2B050;
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+  height: 100vh;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 1em;
-  padding: 2em;
+  justify-content: center;
 
-  &__count {
-    padding: 1em;
-    background-color: darkslateblue;
-    color: white;
+  background-color: beige;
+  color: #4D4D4D;
+}
+
+.App {
+  width: 340px;
+  height: 550px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.screen {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 14rem;
+  margin: 2rem;
+  padding-top: 2rem;
+  border-bottom: 2px solid #4D4D4D;
+
+  &__history {
+    font-size: 2rem;
+  }
+
+  &__main {
+    width: 100%;
+    position: relative;
+  }
+
+  &__equal {
+    position: absolute;
+    left: 0;
+    z-index: 20;
+    font-size: 4rem;
+  }
+
+  &__answer {
+    display: inline-block;
+    overflow: hidden;
+    font-size: 4rem;
   }
 }
 
-.read-the-docs {
-  color: #888;
+.button {
+  padding: 2rem;
+  // width: 100%;
+  height: calc(100% - 18rem);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 10px;
+  color: #4D4D4D;
+
+  button {
+    font-size: 2rem;
+    border: none;
+    color: #4D4D4D;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 30px;
+    outline: none;
+  }
+
+  &__clear {
+    grid-column: 1/4;
+  }
+
+  .blue {
+    background-color: $buttonPrimary;
+  }
+
+  .yellow {
+    background-color: $buttonSecondary;
+  }
 }
