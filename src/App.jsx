@@ -12,12 +12,17 @@ const calButtons = [
   ['+/-', 0, '.', '='],
 ];
 
-function App() {
+const thousandSeparator = num => {
+  const parts = num.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+};
+
+const App = () => {
   const dispatch = useDispatch();
   const operand = useSelector(state => state.operand);
   const answer = useSelector(state => state.answer);
   const history = useSelector(state => state.history);
-  // const operator = useSelector(state => state.operator);
 
   const numberHandler = e => {
     e.preventDefault();
@@ -44,20 +49,20 @@ function App() {
   const decimalHandler = e => {
     e.preventDefault();
     const value = e.target.innerHTML;
-    dispatch(calcActions.setDecimal(value))
-  }
+    dispatch(calcActions.setDecimal(value));
+  };
 
   const plusMinusHandler = e => {
     e.preventDefault();
     const value = e.target.innerHTML;
-    dispatch(calcActions.setPlusMinus(value))
-  }
+    dispatch(calcActions.setPlusMinus(value));
+  };
 
   return (
     <div className="App">
       <Screen
         history={history}
-        value={operand ? operand : answer}
+        value={operand ? thousandSeparator(operand) : thousandSeparator(answer)}
       />
       <div className="button">
         {calButtons.flat().map((value, index) => {
@@ -95,6 +100,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

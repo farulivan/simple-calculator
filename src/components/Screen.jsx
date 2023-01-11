@@ -7,7 +7,15 @@ const Screen = ({ value, history }) => {
       <p className="screen__history">{history}</p>
       <div className="screen__main">
         <p className="screen__equal">=</p>
-        <p className="screen__answer">{value}</p>
+        <p
+          className={
+            value.toString().length < 10
+              ? 'screen__answer '
+              : 'screen__answer smaller'
+          }
+        >
+          {value}
+        </p>
       </div>
     </div>
   );

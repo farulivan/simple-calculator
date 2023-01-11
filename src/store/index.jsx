@@ -67,7 +67,7 @@ const Slice = createSlice({
         state.operator = '';
         state.operand = 0;
       } else {
-        console.log('out of reach')
+        console.log('out of reach');
       }
     },
     setDecimal(state, action) {
