@@ -16,16 +16,12 @@ const Slice = createSlice({
   initialState,
   reducers: {
     addOperand(state, action) {
-      // detect after equal
-      if (state.history.includes('=')) {
-        state.history = '';
-      }
-
       state.operand === 0
         ? (state.operand = action.payload)
         : (state.operand = state.operand + action.payload);
-
-      // state.answer = !state.operator ? 0 : state.answer;
+      
+      // to fresh restart after equal
+      state.answer = !state.operator ? 0 : state.answer;
     },
     clearOperand(state) {
       state.operator = '';
@@ -60,14 +56,17 @@ const Slice = createSlice({
       state.operand = 0;
     },
     calculate(state) {
-      state.answer = mathCalculate(
-        Number(state.answer),
-        Number(state.operand),
-        state.operator
-      );
-      state.history = `${state.history} ${state.operand}`;
-      state.operator = '';
-      state.operand = 0;
+      // validate operator and operand
+      if(state.operator && state.operand){
+        state.answer = mathCalculate(
+          Number(state.answer),
+          Number(state.operand),
+          state.operator
+        );
+        state.history = `${state.history} ${state.operand}`;
+        state.operator = '';
+        state.operand = 0;
+      }
     },
     setDecimal(state, action) {
       //check if there is already a decimal
