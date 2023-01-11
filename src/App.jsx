@@ -47,6 +47,12 @@ function App() {
     dispatch(calcActions.setDecimal(value))
   }
 
+  const plusMinusHandler = e => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+    dispatch(calcActions.setPlusMinus(value))
+  }
+
   return (
     <div className="App">
       <Screen
@@ -70,6 +76,8 @@ function App() {
               onClick={
                 value === 'CLEAR'
                   ? clearHandler
+                  : value === '+/-'
+                  ? plusMinusHandler
                   : value === '='
                   ? equalHandler
                   : value === '%' ||

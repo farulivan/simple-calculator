@@ -19,7 +19,7 @@ const Slice = createSlice({
       state.operand === 0
         ? (state.operand = action.payload)
         : (state.operand = state.operand + action.payload);
-      
+
       // to fresh restart after equal
       state.answer = !state.operator ? 0 : state.answer;
     },
@@ -57,7 +57,7 @@ const Slice = createSlice({
     },
     calculate(state) {
       // validate operator and operand
-      if(state.operator && state.operand){
+      if (state.operator && state.operand) {
         state.answer = mathCalculate(
           Number(state.answer),
           Number(state.operand),
@@ -66,6 +66,8 @@ const Slice = createSlice({
         state.history = `${state.history} ${state.operand}`;
         state.operator = '';
         state.operand = 0;
+      } else {
+        console.log('out of reach')
       }
     },
     setDecimal(state, action) {
@@ -73,6 +75,11 @@ const Slice = createSlice({
       state.operand.toString().includes('.')
         ? state.operand
         : (state.operand = state.operand + action.payload);
+    },
+    setPlusMinus(state) {
+      state.operand ? (state.operand = state.operand * -1) : 0;
+      state.answer ? (state.answer = state.answer * -1) : 0;
+      state.operator = '';
     },
   },
 });
