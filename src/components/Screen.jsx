@@ -15,7 +15,7 @@ const Screen = ({ value, history }) => {
 
 Screen.propTypes = {
   value: PropTypes.number.isRequired,
-  history: PropTypes.number.isRequired,
+  history: PropTypes.string.isRequired,
 };
 
 export default Screen;

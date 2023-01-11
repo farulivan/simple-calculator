@@ -1,8 +1,8 @@
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.scss';
 import Button from './components/Button';
 import Screen from './components/Screen';
-// import { counterActions } from './store';
+import { calcActions } from './store';
 
 const calButtons = [
   ['CLEAR', 'x'],
@@ -13,26 +13,46 @@ const calButtons = [
 ];
 
 function App() {
-  // const dispatch = useDispatch();
-  // const counter = useSelector(state => state.counter);
+  const dispatch = useDispatch();
+  const operand = useSelector(state => state.operand);
+  const answer = useSelector(state => state.answer);
+  const history = useSelector(state => state.history);
+  // const operator = useSelector(state => state.operator);
 
-  // const incrementHandler = () => {
-  //   dispatch(counterActions.increment());
-  // };
+  const numberHandler = e => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+    dispatch(calcActions.addOperand(value));
+  };
 
-  // const decrementHandler = () => {
-  //   dispatch(counterActions.decrement());
-  // };
+  const clearHandler = e => {
+    e.preventDefault();
+    dispatch(calcActions.clearOperand());
+  };
+
+  const operatorHandler = e => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+    dispatch(calcActions.setOperator(value));
+  };
+
+  const equalHandler = e => {
+    e.preventDefault();
+    dispatch(calcActions.calculate());
+  };
 
   return (
     <div className="App">
-      <Screen history={25-56+587} value={587} />
+      <Screen
+        history={history}
+        value={Number(operand) ? Number(operand) : Number(answer)}
+      />
       <div className="button">
         {calButtons.flat().map((value, index) => {
           return (
             <Button
               key={index}
-              type='button'
+              type="button"
               className={
                 value === 'CLEAR'
                   ? 'button__item button__clear button__bg-blue'
@@ -41,6 +61,18 @@ function App() {
                   : 'button__item button__bg-orange'
               }
               value={value}
+              onClick={
+                value === 'CLEAR'
+                  ? clearHandler
+                  : value === '='
+                  ? equalHandler
+                  : value === '%' ||
+                    value === 'x' ||
+                    value === '-' ||
+                    value === '+'
+                  ? operatorHandler
+                  : numberHandler
+              }
             />
           );
         })}
