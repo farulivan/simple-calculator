@@ -64,6 +64,12 @@ const Slice = createSlice({
       state.operator = '';
       state.operand = 0;
     },
+    setDecimal(state, action) {
+      //check if there is already a decimal
+      state.operand.toString().includes('.')
+        ? state.operand
+        : state.operand = state.operand + action.payload
+    }
   },
 });
 

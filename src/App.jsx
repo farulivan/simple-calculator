@@ -41,11 +41,17 @@ function App() {
     dispatch(calcActions.calculate());
   };
 
+  const decimalHandler = e => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+    dispatch(calcActions.setDecimal(value))
+  }
+
   return (
     <div className="App">
       <Screen
         history={history}
-        value={Number(operand) ? Number(operand) : Number(answer)}
+        value={operand ? operand : answer}
       />
       <div className="button">
         {calButtons.flat().map((value, index) => {
@@ -71,6 +77,8 @@ function App() {
                     value === '-' ||
                     value === '+'
                   ? operatorHandler
+                  : value === '.'
+                  ? decimalHandler
                   : numberHandler
               }
             />

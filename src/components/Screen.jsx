@@ -14,7 +14,10 @@ const Screen = ({ value, history }) => {
 };
 
 Screen.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
   history: PropTypes.string.isRequired,
 };
 
