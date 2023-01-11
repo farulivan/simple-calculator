@@ -34,6 +34,13 @@ const Slice = createSlice({
       state.history = '';
     },
     setOperator(state, action) {
+      // detect changing operator
+      if (state.operand === 0 && state.operator) {
+        state.operator = action.payload;
+        state.history = `${state.history.slice(0, -1)} ${state.operator}`;
+        return;
+      }
+
       state.answer = !state.operand
         ? state.answer
         : !state.answer
@@ -45,11 +52,9 @@ const Slice = createSlice({
           );
 
       // to continue after equal
-      state.history.includes('=')
+      state.operator === ''
         ? (state.history = `${state.answer} ${action.payload}`)
-        : (state.history = `${state.history} ${
-            state.operand
-          } ${action.payload}`);
+        : (state.history = `${state.history} ${state.operand} ${action.payload}`);
 
       state.operator = action.payload;
       state.operand = 0;
@@ -60,7 +65,7 @@ const Slice = createSlice({
         Number(state.operand),
         state.operator
       );
-      state.history = `${state.history} ${state.operand} =`;
+      state.history = `${state.history} ${state.operand}`;
       state.operator = '';
       state.operand = 0;
     },
@@ -68,8 +73,8 @@ const Slice = createSlice({
       //check if there is already a decimal
       state.operand.toString().includes('.')
         ? state.operand
-        : state.operand = state.operand + action.payload
-    }
+        : (state.operand = state.operand + action.payload);
+    },
   },
 });
 
