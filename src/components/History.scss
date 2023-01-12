@@ -19,5 +19,15 @@ $textPrimary: #4d4d4d;
       font-size: 2rem;
     }
   }
+    
+  &__notfound {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.center {
+  align-items: center;
 }
 
