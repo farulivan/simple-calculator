@@ -9,4 +9,15 @@ $textPrimary: #4d4d4d;
   font-size: 1.5rem;
   height: 100%;
   overflow: auto;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    
+    span {
+      font-size: 2rem;
+    }
+  }
 }
+

@@ -1,23 +1,17 @@
+import { useSelector } from 'react-redux';
 import './History.scss';
 
 const History = () => {
+  const history = useSelector(state => state.history);
+
   return (
     <div className="history">
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
-      <p>1245 x 1245 = 12510</p>
+      {history.map((item, index) => (
+        <p key={index} className="history__item">
+          {item[0]} = 
+          <span> {item[1]}</span>
+        </p>
+      ))}
     </div>
   );
 };

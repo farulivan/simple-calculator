@@ -9,23 +9,29 @@ const mathCalculate = (a, b, operator) =>
     ? a * b
     : a / b;
 
-const initialState = { operator: '', operand: 0, answer: 0, detail: '' };
+const initialState = {
+  operator: '',
+  operand: 0,
+  answer: 0,
+  detail: '',
+  history: [],
+};
 
 const Slice = createSlice({
   name: 'calc',
   initialState,
   reducers: {
     addOperand(state, action) {
-      if(state.operand.toString().length < 12) {
+      if (state.operand.toString().length < 12) {
         // detect 0 input after operator
         state.operand === 0 && state.operator
           ? (state.operand = action.payload)
           : (state.operand = Number(state.operand + action.payload));
-  
+
         // to fresh restart after equal
         state.answer = !state.operator ? 0 : state.answer;
       } else {
-        console.log('reach maximum operand length')
+        console.log('reach maximum operand length');
       }
     },
     clearOperand(state) {
@@ -69,6 +75,7 @@ const Slice = createSlice({
           state.operator
         );
         state.detail = `${state.detail} ${state.operand}`;
+        state.history.push([state.detail, state.answer]);
         state.operator = '';
         state.operand = 0;
       } else {
