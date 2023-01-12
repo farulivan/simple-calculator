@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { loadState, saveState } from '../localstorage';
 
 const mathCalculate = (a, b, operator) =>
   operator === '+'
@@ -9,12 +10,15 @@ const mathCalculate = (a, b, operator) =>
     ? a * b
     : a / b;
 
+// check the Local Storage
+const history = loadState() ? loadState() : [];
+
 const initialState = {
   operator: '',
   operand: 0,
   answer: 0,
   detail: '',
-  history: [],
+  history: history,
 };
 
 const Slice = createSlice({
@@ -76,6 +80,8 @@ const Slice = createSlice({
         );
         state.detail = `${state.detail} ${state.operand}`;
         state.history.push([state.detail, state.answer]);
+        // save to Local Storage
+        saveState(state.history);
         state.operator = '';
         state.operand = 0;
       } else {
