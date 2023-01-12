@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { calcActions } from '../store';
 import History from './History';
 import Button from './Button';
 import './BottomPanel.scss';
-import { calcActions } from '../store';
 
 const calButtons = [
   ['CLEAR', '/'],
