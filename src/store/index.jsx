@@ -16,12 +16,17 @@ const Slice = createSlice({
   initialState,
   reducers: {
     addOperand(state, action) {
-      state.operand === 0
-        ? (state.operand = action.payload)
-        : (state.operand = state.operand + action.payload);
-
-      // to fresh restart after equal
-      state.answer = !state.operator ? 0 : state.answer;
+      if(state.operand.toString().length < 12) {
+        // detect 0 input after operator
+        state.operand === 0 && state.operator
+          ? (state.operand = action.payload)
+          : (state.operand = Number(state.operand + action.payload));
+  
+        // to fresh restart after equal
+        state.answer = !state.operator ? 0 : state.answer;
+      } else {
+        console.log('reach maximum operand length')
+      }
     },
     clearOperand(state) {
       state.operator = '';

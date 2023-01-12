@@ -5,8 +5,8 @@ const Screen = ({ value, history }) => {
   return (
     <div className="screen">
       <p className="screen__history">{history}</p>
+      <p className="screen__equal">=</p>
       <div className="screen__main">
-        <p className="screen__equal">=</p>
         <p
           className={
             value.toString().length < 10

@@ -7,6 +7,7 @@
   margin: 2rem;
   padding-top: 2rem;
   border-bottom: 2px solid #4d4d4d;
+  position: relative;
 
   &__history {
     font-size: 2rem;
@@ -14,12 +15,14 @@
 
   &__main {
     width: 100%;
-    position: relative;
+    overflow: hidden;
+    padding-left: 4.1rem;
   }
 
   &__equal {
     position: absolute;
     left: 0;
+    bottom: 0;
     z-index: 20;
     font-size: 4rem;
   }

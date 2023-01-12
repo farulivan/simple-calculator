@@ -5,10 +5,10 @@ import Screen from './components/Screen';
 import { calcActions } from './store';
 
 const calButtons = [
-  ['CLEAR', 'x'],
-  [1, 2, 3, '+'],
+  ['CLEAR', '/'],
+  [1, 2, 3, 'x'],
   [4, 5, 6, '-'],
-  [7, 8, 9, '%'],
+  [7, 8, 9, '+'],
   ['+/-', 0, '.', '='],
 ];
 
@@ -85,10 +85,10 @@ const App = () => {
                   ? plusMinusHandler
                   : value === '='
                   ? equalHandler
-                  : value === '%' ||
-                    value === 'x' ||
-                    value === '-' ||
-                    value === '+'
+                  : value === 'x' ||
+                    value === '/' ||
+                    value === '+' ||
+                    value === '-'
                   ? operatorHandler
                   : value === '.'
                   ? decimalHandler
