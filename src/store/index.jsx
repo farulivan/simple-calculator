@@ -62,6 +62,21 @@ const Slice = createSlice({
             state.operator
           );
 
+      // rounding decimal
+      if (state.answer % 1 !== 0) {
+        state.answer = Math.round(state.answer * 100) / 100;
+      }
+
+      // detect maximum length
+      if (state.answer.toString().length > 12) {
+        console.log('maximum length reached');
+        state.answer = 'Error';
+        state.operator = '';
+        state.operand = 0;
+        state.detail = 'can only calculate up to 999,999,999,999'
+        return;
+      }
+
       // to continue after equal
       state.operator === ''
         ? (state.detail = `${state.answer} ${action.payload}`)
@@ -78,6 +93,22 @@ const Slice = createSlice({
           Number(state.operand),
           state.operator
         );
+
+        // rounding decimal
+        if (state.answer % 1 !== 0) {
+          state.answer = Math.round(state.answer * 100) / 100;
+        }
+
+      // detect maximum length
+      if (state.answer.toString().length > 12) {
+        console.log('maximum length reached');
+        state.answer = 'Error';
+        state.operator = '';
+        state.operand = 0;
+        state.detail = 'can only calculate up to 999,999,999,999'
+        return;
+      }
+
         state.detail = `${state.detail} ${state.operand}`;
         state.history.push([state.detail, state.answer]);
         // save to Local Storage
