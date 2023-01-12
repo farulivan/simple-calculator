@@ -1,3 +1,5 @@
+$textPrimary: #4d4d4d;
+
 #root {
   height: 100vh;
 
@@ -6,12 +8,30 @@
   justify-content: center;
 
   background-color: beige;
-  color: #4d4d4d;
+  color: $textPrimary;
 }
 
 .App {
   width: 340px;
-  height: 550px;
+  height: 600px;
   border-radius: 20px;
   background-color: white;
+}
+
+.history-btn {
+  text-align: right;
+  margin: 2rem 2rem 1rem 2rem;
+
+  &__item {
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    outline: none;
+
+    img {
+      background-color: white;
+      width: 30px;
+    }
+  }
 }

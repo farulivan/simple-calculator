@@ -9,7 +9,7 @@ const mathCalculate = (a, b, operator) =>
     ? a * b
     : a / b;
 
-const initialState = { operator: '', operand: 0, answer: 0, history: '' };
+const initialState = { operator: '', operand: 0, answer: 0, detail: '' };
 
 const Slice = createSlice({
   name: 'calc',
@@ -32,13 +32,13 @@ const Slice = createSlice({
       state.operator = '';
       state.operand = 0;
       state.answer = 0;
-      state.history = '';
+      state.detail = '';
     },
     setOperator(state, action) {
       // detect changing operator
       if (state.operand === 0 && state.operator) {
         state.operator = action.payload;
-        state.history = `${state.history.slice(0, -1)} ${state.operator}`;
+        state.detail = `${state.detail.slice(0, -1)} ${state.operator}`;
         return;
       }
 
@@ -54,8 +54,8 @@ const Slice = createSlice({
 
       // to continue after equal
       state.operator === ''
-        ? (state.history = `${state.answer} ${action.payload}`)
-        : (state.history = `${state.history} ${state.operand} ${action.payload}`);
+        ? (state.detail = `${state.answer} ${action.payload}`)
+        : (state.detail = `${state.detail} ${state.operand} ${action.payload}`);
 
       state.operator = action.payload;
       state.operand = 0;
@@ -68,7 +68,7 @@ const Slice = createSlice({
           Number(state.operand),
           state.operator
         );
-        state.history = `${state.history} ${state.operand}`;
+        state.detail = `${state.detail} ${state.operand}`;
         state.operator = '';
         state.operand = 0;
       } else {

@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import './Screen.scss';
 
-const Screen = ({ value, history }) => {
+const Screen = ({ value, detail }) => {
   return (
     <div className="screen">
-      <p className="screen__history">{history}</p>
+      <p className="screen__detail">{detail}</p>
       <p className="screen__equal">=</p>
       <div className="screen__main">
         <p
@@ -26,7 +26,7 @@ Screen.propTypes = {
     PropTypes.string.isRequired,
     PropTypes.number.isRequired,
   ]),
-  history: PropTypes.string.isRequired,
+  detail: PropTypes.string.isRequired,
 };
 
 export default Screen;

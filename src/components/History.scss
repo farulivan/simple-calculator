@@ -1,0 +1,12 @@
+$textPrimary: #4d4d4d;
+
+.history {
+  color: $textPrimary;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  font-size: 1.5rem;
+  height: 100%;
+  overflow: auto;
+}

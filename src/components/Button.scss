@@ -3,19 +3,16 @@ $buttonSecondary: #ffe2b050;
 $textPrimary: #4d4d4d;
 
 .button {
-  padding: 2rem;
-  height: calc(100% - 18rem);
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-gap: 10px;
-  color: $textPrimary;
 
   &__item {
     font-size: 2rem;
     border: none;
     color: $textPrimary;
-    font-weight: bold;
     cursor: pointer;
     border-radius: 30px;
     outline: none;
